@@ -16,12 +16,21 @@ class App extends Component {
     render() {
         return <div>
             {this.state.data &&
-            (this.state.data).results
-                .map(random => makeUserDiv(random))}
+            this.state.data.results
+                .map(random => makeUserDiv(random))
+            }
         </div>;
     }
 }
 
-const makeUserDiv = (random) => <h1>{random.name.first}</h1>
+const makeUserDiv = (random) =>
+    <div>
+        <div>
+            <img src = {random.picture.thumbnail} alt={"user"}/>
+            <h3>{random.name.first} {random.name.last}</h3>
+            <p><a href="mailto:{random.email}">{random.email}</a></p>
+            <hr/>
+        </div>
+    </div>
 
 export default App;
